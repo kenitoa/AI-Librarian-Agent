@@ -1,0 +1,18 @@
+test_author_who_question_does_not_add_librarian_identity (test_library_agent.LibraryTests.test_author_who_question_does_not_add_librarian_identity) ... ok
+test_book_search_about_other_topics_is_in_scope (test_library_agent.LibraryTests.test_book_search_about_other_topics_is_in_scope) ... ok
+test_context_injected_and_checkpoint_unsafe_text_replaced (test_library_agent.LibraryTests.test_context_injected_and_checkpoint_unsafe_text_replaced) ... ok
+test_exact_catalog_and_title_author_partial (test_library_agent.LibraryTests.test_exact_catalog_and_title_author_partial) ... ok
+test_input_guards_never_call_model (test_library_agent.LibraryTests.test_input_guards_never_call_model) ... ok
+test_memory_scope_user_and_app (test_library_agent.LibraryTests.test_memory_scope_user_and_app) ... ok
+test_missing_reply_is_real_tool_execution_once_each_turn (test_library_agent.LibraryTests.test_missing_reply_is_real_tool_execution_once_each_turn) ... ok
+test_no_result_and_unknown_loan (test_library_agent.LibraryTests.test_no_result_and_unknown_loan) ... ok
+test_same_process_memory_across_threads (test_library_agent.LibraryTests.test_same_process_memory_across_threads) ... ok
+test_short_history_scoped_by_user_and_app (test_library_agent.LibraryTests.test_short_history_scoped_by_user_and_app) ... ok
+test_tool_runtime_identifiers_hidden_from_model (test_library_agent.LibraryTests.test_tool_runtime_identifiers_hidden_from_model) ... ok
+test_unknown_genre_hours_and_judge_failure_safe (test_library_agent.LibraryTests.test_unknown_genre_hours_and_judge_failure_safe) ... ok
+test_whitespace_and_all_catalog (test_library_agent.LibraryTests.test_whitespace_and_all_catalog) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.207s
+
+OK

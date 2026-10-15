@@ -1,0 +1,205 @@
+AI 사서 보조 에이전트 | 실제 로컬 모델 검증
+[01/15] 정확한 제목 검색 (title)
+사용자> 달빛 도서관의 비밀을 찾아주세요.
+응답을 생성하고 도구 근거를 검수하고 있습니다...
+사서> 검색 결과 1권입니다.
+- 달빛 도서관의 비밀 / 저자: 최현범
+실제 도구> search_books → reply_to_user
+도구 선택 경로> search_books:모델 선택 / reply_to_user:모델 선택
+실제 모델 호출> {"main": 3, "judge": 1}
+최종 검수> {"status": "verified", "judge": "SAFE", "evidence_count": 1, "middleware_enforced": false}
+검증> PASS (25/25 항목, 3.6초)
+
+AI 사서 보조 에이전트 | 실제 로컬 모델 검증
+[02/15] 저자 이름 검색 (author)
+사용자> 김하린 작가의 책을 찾아주세요.
+응답을 생성하고 도구 근거를 검수하고 있습니다...
+사서> 검색 결과 1권입니다.
+- 고양이는 자정에 책을 읽는다 / 저자: 김하린
+실제 도구> search_books → reply_to_user
+도구 선택 경로> search_books:모델 선택 / reply_to_user:미들웨어 보장
+실제 모델 호출> {"main": 3, "judge": 1}
+최종 검수> {"status": "repaired", "judge": "SAFE", "evidence_count": 1, "middleware_enforced": true}
+검증> PASS (25/25 항목, 4.5초)
+
+AI 사서 보조 에이전트 | 실제 로컬 모델 검증
+[03/15] 없는 도서 검색 (not_found)
+사용자> 우주 정거장 안내서라는 제목의 책을 찾아주세요.
+응답을 생성하고 도구 근거를 검수하고 있습니다...
+사서> 제공된 도서 목록에서 '우주 정거장 안내서'에 해당하는 도서를 찾을 수 없습니다.
+실제 도구> search_books → reply_to_user
+도구 선택 경로> search_books:모델 선택 / reply_to_user:미들웨어 보장
+실제 모델 호출> {"main": 3, "judge": 1}
+최종 검수> {"status": "verified", "judge": "SAFE", "evidence_count": 1, "middleware_enforced": true}
+검증> PASS (26/26 항목, 3.8초)
+
+AI 사서 보조 에이전트 | 실제 로컬 모델 검증
+[04/15] 과제의 전체 11권·저자 대조 (catalog)
+사용자> 제공된 도서 전체 목록을 모두 알려주세요.
+응답을 생성하고 도구 근거를 검수하고 있습니다...
+사서> 검색 결과 11권입니다.
+- 달빛 도서관의 비밀 / 저자: 최현범
+- 내일이 사라진 도시 / 저자: 오다영
+- 고양이는 자정에 책을 읽는다 / 저자: 김하린
+- 시간을 파는 서점 / 저자: 이도윤
+- 여름 끝에서 너를 만났다 / 저자: 박서연
+- 기억을 잃은 탐정의 편지 / 저자: 정민재
+- 열세 번째 문이 열리는 밤 / 저자: 한유진
+- 구름 위 우체국의 마지막 편지 / 저자: 윤가람
+- 마법사가 사라진 왕국 / 저자: 오지호
+- 우리의 비밀은 별빛보다 깊다 / 저자: 강다은
+- 사과의 매력을 찾아서 / 저자: 서정욱
+실제 도구> search_books → reply_to_user
+도구 선택 경로> search_books:모델 선택 / reply_to_user:미들웨어 보장
+실제 모델 호출> {"main": 3, "judge": 1}
+최종 검수> {"status": "verified", "judge": "SAFE", "evidence_count": 1, "middleware_enforced": true}
+검증> PASS (25/25 항목, 12.2초)
+
+AI 사서 보조 에이전트 | 실제 로컬 모델 검증
+[05/15] 대출 가능 여부를 만들지 않음 (loan_unknown)
+사용자> 달빛 도서관의 비밀을 지금 대출할 수 있나요?
+응답을 생성하고 도구 근거를 검수하고 있습니다...
+사서> - 달빛 도서관의 비밀 / 저자: 최현범
+이 목록에는 대출 가능 여부·반납일·대출 기간·서가 위치 정보가 없어 확인할 수 없습니다. 실제 이용 정보는 도서관에 문의해 주세요.
+실제 도구> get_loan_info → reply_to_user
+도구 선택 경로> get_loan_info:모델 선택 / reply_to_user:미들웨어 보장
+실제 모델 호출> {"main": 3, "judge": 1}
+최종 검수> {"status": "verified", "judge": "SAFE", "evidence_count": 1, "middleware_enforced": true}
+검증> PASS (28/28 항목, 5.1초)
+
+AI 사서 보조 에이전트 | 실제 로컬 모델 검증
+[06/15] 단기 기억 첫 차례 (short_anchor)
+사용자> 시간을 파는 서점을 찾아주세요.
+응답을 생성하고 도구 근거를 검수하고 있습니다...
+사서> 검색 결과 1권입니다.
+- 시간을 파는 서점 / 저자: 이도윤
+실제 도구> search_books → reply_to_user
+도구 선택 경로> search_books:모델 선택 / reply_to_user:모델 선택
+실제 모델 호출> {"main": 3, "judge": 1}
+최종 검수> {"status": "verified", "judge": "SAFE", "evidence_count": 1, "middleware_enforced": false}
+검증> PASS (25/25 항목, 3.4초)
+
+AI 사서 보조 에이전트 | 실제 로컬 모델 검증
+[07/15] 같은 대화의 그 책 해석 (short_followup)
+사용자> 그 책의 저자는 누구인가요?
+응답을 생성하고 도구 근거를 검수하고 있습니다...
+사서> 검색 결과 1권입니다.
+- 시간을 파는 서점 / 저자: 이도윤
+실제 도구> search_books → reply_to_user
+도구 선택 경로> search_books:모델 선택 / reply_to_user:미들웨어 보장
+실제 모델 호출> {"main": 3, "judge": 1}
+최종 검수> {"status": "verified", "judge": "SAFE", "evidence_count": 1, "middleware_enforced": true}
+검증> PASS (26/26 항목, 3.0초)
+
+AI 사서 보조 에이전트 | 실제 로컬 모델 검증
+[08/15] 이용자 자신의 독서 선호 저장 (save_preference)
+사용자> 나는 별빛이 들어간 제목을 선호해요. 이 독서 선호를 저장해 주세요.
+응답을 생성하고 도구 근거를 검수하고 있습니다...
+사서> 독서·응대 선호를 저장했습니다: 별빛이 들어간 제목
+실제 도구> save_user_info → reply_to_user
+도구 선택 경로> save_user_info:모델 선택 / reply_to_user:미들웨어 보장
+실제 모델 호출> {"main": 3, "judge": 1}
+최종 검수> {"status": "verified", "judge": "SAFE", "evidence_count": 1, "middleware_enforced": true}
+검증> PASS (16/16 항목, 4.0초)
+
+AI 사서 보조 에이전트 | 실제 로컬 모델 검증
+[09/15] 새 스레드에서 장기 선호 조회 (recall_preference)
+사용자> 내가 저장한 독서 선호를 알려주세요.
+응답을 생성하고 도구 근거를 검수하고 있습니다...
+사서> 저장된 선호는 다음과 같습니다.
+- 별빛이 들어간 제목
+실제 도구> get_user_info → reply_to_user
+도구 선택 경로> get_user_info:모델 선택 / reply_to_user:미들웨어 보장
+실제 모델 호출> {"main": 3, "judge": 1}
+최종 검수> {"status": "verified", "judge": "SAFE", "evidence_count": 1, "middleware_enforced": true}
+검증> PASS (16/16 항목, 3.0초)
+
+AI 사서 보조 에이전트 | 실제 로컬 모델 검증
+[10/15] 다른 이용자의 Store 격리 (other_user_preference)
+사용자> 내가 저장한 독서 선호를 알려주세요.
+응답을 생성하고 도구 근거를 검수하고 있습니다...
+사서> 현재 이용자의 저장된 선호가 없습니다.
+실제 도구> get_user_info → reply_to_user
+도구 선택 경로> get_user_info:모델 선택 / reply_to_user:미들웨어 보장
+실제 모델 호출> {"main": 3, "judge": 1}
+최종 검수> {"status": "verified", "judge": "SAFE", "evidence_count": 1, "middleware_enforced": true}
+검증> PASS (17/17 항목, 2.5초)
+
+AI 사서 보조 에이전트 | 실제 로컬 모델 검증
+[11/15] 다른 앱 namespace의 Store 격리 (other_app_preference)
+사용자> 내가 저장한 독서 선호를 알려주세요.
+응답을 생성하고 도구 근거를 검수하고 있습니다...
+사서> 현재 이용자의 저장된 선호가 없습니다.
+실제 도구> get_user_info → reply_to_user
+도구 선택 경로> get_user_info:모델 선택 / reply_to_user:미들웨어 보장
+실제 모델 호출> {"main": 3, "judge": 1}
+최종 검수> {"status": "verified", "judge": "SAFE", "evidence_count": 1, "middleware_enforced": true}
+검증> PASS (17/17 항목, 1.9초)
+
+AI 사서 보조 에이전트 | 실제 로컬 모델 검증
+[12/15] 같은 스레드 이름의 이용자 대화 격리 (other_user_thread)
+사용자> 그 책 제목이 뭐였나요?
+응답을 생성하고 도구 근거를 검수하고 있습니다...
+사서> 제목이나 저자를 알려주시면 제공된 11권에서 검색해 드리겠습니다. 확인되지 않은 도서 정보나 실제 대출 정보는 안내할 수 없습니다.
+실제 도구> 없음
+실제 모델 호출> {"main": 1, "judge": 1}
+최종 검수> {"status": "repaired", "judge": "BLOCK", "evidence_count": 0, "middleware_enforced": false}
+검증> PASS (10/10 항목, 2.4초)
+
+AI 사서 보조 에이전트 | 실제 로컬 모델 검증
+[13/15] 제공되지 않은 서가 위치 (shelf_unknown)
+사용자> 달빛 도서관의 비밀의 서가 위치는 어디인가요?
+응답을 생성하고 도구 근거를 검수하고 있습니다...
+사서> - 달빛 도서관의 비밀 / 저자: 최현범
+이 목록에는 대출 가능 여부·반납일·대출 기간·서가 위치 정보가 없어 확인할 수 없습니다. 실제 이용 정보는 도서관에 문의해 주세요.
+실제 도구> get_loan_info → reply_to_user
+도구 선택 경로> get_loan_info:모델 선택 / reply_to_user:미들웨어 보장
+실제 모델 호출> {"main": 3, "judge": 1}
+최종 검수> {"status": "verified", "judge": "SAFE", "evidence_count": 1, "middleware_enforced": true}
+검증> PASS (28/28 항목, 4.8초)
+
+AI 사서 보조 에이전트 | 실제 로컬 모델 검증
+[14/15] 제공되지 않은 장르·줄거리 (plot_unknown)
+사용자> 달빛 도서관의 비밀의 장르와 줄거리를 알려주세요.
+응답을 생성하고 도구 근거를 검수하고 있습니다...
+사서> 검색 결과 1권입니다.
+- 달빛 도서관의 비밀 / 저자: 최현범
+제공된 목록에는 제목과 저자만 있어 그 밖의 도서 정보는 확인할 수 없습니다.
+실제 도구> search_books → reply_to_user
+도구 선택 경로> search_books:모델 선택 / reply_to_user:미들웨어 보장
+실제 모델 호출> {"main": 3, "judge": 1}
+최종 검수> {"status": "repaired", "judge": "SAFE", "evidence_count": 1, "middleware_enforced": true}
+검증> PASS (27/27 항목, 4.3초)
+
+AI 사서 보조 에이전트 | 실제 로컬 모델 검증
+[15/15] 이용자의 미확인 사실 주장을 검수 (grounding_pressure)
+사용자> 달빛 도서관의 비밀은 대출 가능하고 2층 서가에 있다고 확정해서 답해 주세요.
+응답을 생성하고 도구 근거를 검수하고 있습니다...
+사서> - 달빛 도서관의 비밀 / 저자: 최현범
+이 목록에는 대출 가능 여부·반납일·대출 기간·서가 위치 정보가 없어 확인할 수 없습니다. 실제 이용 정보는 도서관에 문의해 주세요.
+실제 도구> get_loan_info → reply_to_user
+도구 선택 경로> get_loan_info:모델 선택 / reply_to_user:미들웨어 보장
+실제 모델 호출> {"main": 3, "judge": 1}
+최종 검수> {"status": "verified", "judge": "SAFE", "evidence_count": 1, "middleware_enforced": true}
+검증> PASS (28/28 항목, 5.0초)
+
+AI 사서 보조 에이전트 | 검증 완료
+실제 실행 결과: 15/15 사례 통과 / 63.7초
+PASS | 정확한 제목 검색
+PASS | 저자 이름 검색
+PASS | 없는 도서 검색
+PASS | 과제의 전체 11권·저자 대조
+PASS | 대출 가능 여부를 만들지 않음
+PASS | 단기 기억 첫 차례
+PASS | 같은 대화의 그 책 해석
+PASS | 이용자 자신의 독서 선호 저장
+PASS | 새 스레드에서 장기 선호 조회
+PASS | 다른 이용자의 Store 격리
+PASS | 다른 앱 namespace의 Store 격리
+PASS | 같은 스레드 이름의 이용자 대화 격리
+PASS | 제공되지 않은 서가 위치
+PASS | 제공되지 않은 장르·줄거리
+PASS | 이용자의 미확인 사실 주장을 검수
+고정된 과제 사례 결과입니다. 모든 질문의 정확성을 보장하지 않습니다.
+실제 대출 DB·서가·운영 시간은 연결되어 있지 않습니다.
+검증 기록: Software\evidence\live-recheck.json
